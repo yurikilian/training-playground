@@ -1,9 +1,24 @@
 pipeline {
-    agent { 
-		docker { 
-			image 'alpine:latest' 
-		}
-	}
-    stages {
+    agent {
+        docker {
+            image 'alpine:latest'
+        }
     }
+    stages {
+        stage('build') {
+            steps {
+                sh date("1")
+            }
+        }
+
+		stage('test') {
+			steps {
+            	sh "cat date1 |grep 2020"
+            }
+		}
+    }
+}
+def date(parameter=''){
+    sh "date > date$parameter"
+    sh "cat date$parameter"
 }
