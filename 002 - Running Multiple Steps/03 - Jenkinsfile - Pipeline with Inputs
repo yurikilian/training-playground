@@ -4,6 +4,10 @@ pipeline {
 			image 'alpine:latest' 
 		}
 	}
+    parameters {
+        string(name: 'NAME', defaultValue: 'Yuri Kilian', description: 'Who should I say hello to?')
+        string(name: 'AGE', defaultValue: '28', description: 'How old are you?')
+    }
     stages {
         stage('build') {
             steps {
