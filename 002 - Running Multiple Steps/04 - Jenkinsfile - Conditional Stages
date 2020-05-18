@@ -4,8 +4,8 @@ pipeline {
 			image 'alpine:latest' 
 		}
 	}
-    parameters {
-        choices(name: 'CHOICE', choices: ['build', 'test'], description: 'choice')
+    parameters { 
+       choice(name: 'CHOICES', choices: ['build', 'test'], description: 'Choose the phase') 
     }
     stages {
         stage('build') {
