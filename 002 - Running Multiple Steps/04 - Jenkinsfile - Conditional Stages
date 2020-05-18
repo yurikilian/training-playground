@@ -5,12 +5,12 @@ pipeline {
 		}
 	}
     parameters {
-        choice(name: 'CHOICE', choices: ['build', 'test'], description: 'choice')
+        choices(name: 'CHOICE', choices: ['build', 'test'], description: 'choice')
     }
     stages {
         stage('build') {
 			when {
-				environment name: 'CHOICE', value: 'test'
+				environment name: 'CHOICE', value: 'build'
 			}
             steps {
 				echo "Executing build"
@@ -19,7 +19,7 @@ pipeline {
 
         stage('test') {
 			when {
-				environment name: 'CHOICE', value: 'build'
+				environment name: 'CHOICE', value: 'test'
 			}
             steps {
 				echo "Executing test"                
